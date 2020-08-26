@@ -116,8 +116,9 @@ export default {
  methods: {
 
     getPosts() {
+      
       this.loadingPosts = true
-      this.$axios.get('http://localhost:3000/posts').then(response => {
+      this.$axios.get(`${ process.env.API }/posts`).then(response => {
         this.posts = response.data
         
         this.loadingPosts = false
@@ -135,8 +136,7 @@ export default {
       return date.formatDate(value, 'MMMM D h:mmA')
     }
   },
-
-created() {
+  created() {
     this.getPosts()
   }
 
